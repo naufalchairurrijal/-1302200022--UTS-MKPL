@@ -25,11 +25,7 @@ public class TaxFunction {
 		int tax = 0;
 
 		checkMonthWorking(numberOfMonthWorking);
-
-		if (numberOfChildren > 3) {
-			numberOfChildren = 3;
-		}
-
+		checkNumberOfChild(numberOfChildren);
 		checkIsMarried(isMarried, monthlySalary, otherMonthlyIncome, numberOfMonthWorking, deductible, numberOfChildren,
 				tax);
 
@@ -44,6 +40,12 @@ public class TaxFunction {
 	private static void checkMonthWorking(int numberOfMonthWorking){
 		if (numberOfMonthWorking > 12) {
 			System.err.println("More than 12 month working per year");
+		}
+	}
+
+	private static void checkNumberOfChild(int numberOfChildren){
+		if (numberOfChildren > 3) {
+			numberOfChildren = 3;
 		}
 	}
 
