@@ -36,19 +36,19 @@ public class TaxFunction {
 
 	}
 
-	private void checkMonthWorking(int numberOfMonthWorking){
+	private static void checkMonthWorking(int numberOfMonthWorking){
 		if (numberOfMonthWorking > 12) {
 			System.err.println("More than 12 month working per year");
 		}
 	}
 
-	private void checkNumberOfChild(int numberOfChildren){
+	private static void checkNumberOfChild(int numberOfChildren){
 		if (numberOfChildren > 3) {
 			numberOfChildren = 3;
 		}
 	}
 
-	private void checkIsMarried(boolean isMarried, int monthlySalary, int otherMonthlyIncome,
+	private static void checkIsMarried(boolean isMarried, int monthlySalary, int otherMonthlyIncome,
 			int numberOfMonthWorking, int deductible, int numberOfChildren, int tax) {
 		if (isMarried) {
 			tax = (int) Math.round(0.05 * (((monthlySalary + otherMonthlyIncome) * numberOfMonthWorking) - deductible
