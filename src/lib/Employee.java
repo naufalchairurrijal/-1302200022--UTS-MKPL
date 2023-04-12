@@ -7,24 +7,17 @@ import java.util.List;
 
 public class Employee{
 
-	private PersonalInformation personal;
-	
-	public void setPersonal(PersonalInformation personal) {
-		this.personal = personal;
+	private enum listGender {
+		Lakilaki,
+		Perempuan
 	}
+	private PersonalInformation personal;
 
-	private int yearJoined;
-	private int monthJoined;
-	private int dayJoined;
+	private JoinTime join;
 	private int monthWorkingInYear;
 	
 	private boolean isForeigner;
 	private listGender gender;
-	 //true = Laki-laki, false = Perempuan
-	private enum listGender{
-		Lakilaki,
-		Perempuan
-	}
 
 	private int monthlySalary;
 	private int otherMonthlyIncome;
@@ -36,11 +29,9 @@ public class Employee{
 	private List<String> childNames;
 	private List<String> childIdNumbers;
 	
-	public Employee(PersonalInformation personal, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, listGender gender) {
+	public Employee(PersonalInformation personal, JoinTime join, boolean isForeigner, listGender gender) {
 		this.setPersonal(personal);
-		this.yearJoined = yearJoined;
-		this.monthJoined = monthJoined;
-		this.dayJoined = dayJoined;
+		this.setJoin(join);
 		this.isForeigner = isForeigner;
 		this.gender = gender;
 		
@@ -95,12 +86,20 @@ public class Employee{
 		//Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
 		LocalDate date = LocalDate.now();
 		
-		if (date.getYear() == yearJoined) {
-			monthWorkingInYear = date.getMonthValue() - monthJoined;
+		if (date.getYear() == join.getYearJoined()) {
+			monthWorkingInYear = date.getMonthValue() - join.getMonthJoined();
 		}else {
 			monthWorkingInYear = 12;
 		}
 		
 		return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible, spouseIdNumber.equals(""), childIdNumbers.size());
+	}
+
+	public void setPersonal(PersonalInformation personal) {
+		this.personal = personal;
+	}
+
+	public void setJoin(JoinTime join) {
+		this.join = join;
 	}
 }
