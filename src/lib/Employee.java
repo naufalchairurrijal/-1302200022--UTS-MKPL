@@ -5,13 +5,9 @@ import java.time.Month;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Employee {
+public class Employee{
 
-	private String employeeId;
-	private String firstName;
-	private String lastName;
-	private String idNumber;
-	private String address;
+	private PersonalInformation personal;
 	
 	private int yearJoined;
 	private int monthJoined;
@@ -37,11 +33,11 @@ public class Employee {
 	private List<String> childIdNumbers;
 	
 	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, listGender gender) {
-		this.employeeId = employeeId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.idNumber = idNumber;
-		this.address = address;
+		personal.setEmployeeId(employeeId);
+		personal.setFirstName(firstName);
+		personal.setLastName(lastName);
+		personal.setIdNumber(idNumber);
+		personal.setAddress(address);
 		this.yearJoined = yearJoined;
 		this.monthJoined = monthJoined;
 		this.dayJoined = dayJoined;
@@ -86,7 +82,7 @@ public class Employee {
 	
 	public void setSpouse(String spouseName, String spouseIdNumber) {
 		this.spouseName = spouseName;
-		this.spouseIdNumber = idNumber;
+		this.spouseIdNumber = personal.getIdNumber();
 	}
 	
 	public void addChild(String childName, String childIdNumber) {
