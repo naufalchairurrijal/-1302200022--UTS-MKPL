@@ -33,6 +33,7 @@ public class Employee{
 	private List<String> childIdNumbers;
 	
 	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, listGender gender) {
+		personal = new PersonalInformation();
 		personal.setEmployeeId(employeeId);
 		personal.setFirstName(firstName);
 		personal.setLastName(lastName);
