@@ -9,6 +9,10 @@ public class Employee{
 
 	private PersonalInformation personal;
 	
+	public void setPersonal(PersonalInformation personal) {
+		this.personal = personal;
+	}
+
 	private int yearJoined;
 	private int monthJoined;
 	private int dayJoined;
@@ -32,13 +36,8 @@ public class Employee{
 	private List<String> childNames;
 	private List<String> childIdNumbers;
 	
-	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, listGender gender) {
-		personal = new PersonalInformation();
-		personal.setEmployeeId(employeeId);
-		personal.setFirstName(firstName);
-		personal.setLastName(lastName);
-		personal.setIdNumber(idNumber);
-		personal.setAddress(address);
+	public Employee(PersonalInformation personal, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, listGender gender) {
+		this.setPersonal(personal);
 		this.yearJoined = yearJoined;
 		this.monthJoined = monthJoined;
 		this.dayJoined = dayJoined;
