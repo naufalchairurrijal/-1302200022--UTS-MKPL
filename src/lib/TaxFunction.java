@@ -1,11 +1,9 @@
 package lib;
 
 public class TaxFunction {
-	private static final int NonTaxableSingle = 54000000;
-	private static final int NonTaxableMarried = NonTaxableSingle + 4500000;
-	private static final int NonTaxableChild = 1500000;
-
-	private static final double TaxRate = 0.05;
+	private static final int NoTaxableForSingle = 54000000;
+	private static final int NoTaxableForMarried = NoTaxableForSingle + 4500000;
+	private static final int NoTaxableForChild = 1500000;
 
 	public static int calculateTax(int monthlySalary, int otherMonthlyIncome, int numberOfMonthWorking, int deductible, boolean isMarried, int numberOfChildren) {
 		checkMonthWorking(numberOfMonthWorking);
@@ -31,17 +29,16 @@ public class TaxFunction {
 	private static int checkIsMarried(boolean isMarried, int monthlySalary, int otherMonthlyIncome,
 			int numberOfMonthWorking, int deductible, int numberOfChildren) {
 		int tax = 0;
-		int nonTaxableIncome = NonTaxableSingle;
+		int noTaxableForIncome = NoTaxableForSingle;
 
 		if (isMarried) {
-			nonTaxableIncome = NonTaxableMarried;
+			noTaxableForIncome = NoTaxableForMarried;
 		} 
-
-		nonTaxableIncome += numberOfChildren * NonTaxableChild;
-		int taxableIncome = ((monthlySalary + otherMonthlyIncome) * numberOfMonthWorking) - deductible - nonTaxableIncome;
+		noTaxableForIncome = noTaxableForIncome +  (numberOfChildren * NoTaxableForChild);
+		int taxableIncome = ((monthlySalary + otherMonthlyIncome) * numberOfMonthWorking) - deductible - noTaxableForIncome;
 
 		if (taxableIncome > 0){
-			tax = (int) Math.round(TaxRate * taxableIncome);
+			tax = (int) Math.round(0.05 * taxableIncome);
 		}
 		return tax;
 	}
